@@ -1,28 +1,34 @@
 import tkinter as tk
-
+import random
 
 main = tk.Tk()
 main.title("SLUMPEN")
-main.grid()
+main.geometry("400x500")
 
-def slump(event):
-    import random
+
+
+def slump(event=None):
+    
     value = random.randint(1,6)
-    if value==1:
-        print("hoppa")
-    elif value==2:
-        print("japp")
-    elif value==3:
-        print("tihi")
-    elif value==4:
-        print("jahopp")
-    elif value==5:
-        print("raaaa")
-    elif value==6:
-        print("lalala")
+    mapping = {
+        1: "hoppa",
+        2: "japp",
+        3: "tihi",
+        4: "jahopp",
+        5: "raaaa",
+        6: "lalala",
+    }
+    text = mapping.get(value, str(value))
+    
+    output.config(state="normal")
+    output.insert(tk.END, text + "\n")
+    output.see(tk.END)
+    output.config(state="disabled")
 
-add_button = tk.Button(main, text = "test")
-add_button.bind("<Button-1>", slump)
-add_button.pack()
+output = tk.Text(main,height=10, width=32, state="disabled")
+output.grid()
+
+add_button = tk.Button(main,text="random", command=slump)
+add_button.grid()
 
 main.mainloop()
