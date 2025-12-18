@@ -16,7 +16,7 @@ def slump(event=None):
         3: "krama någon",
         4: "rita ett porträtt av din vän",
         5: "ta ett varv runt skolan",
-        6: "...67",
+        6: "säg god jul till någon",
     }
     text = mapping.get(value, str(value))
     
